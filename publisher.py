@@ -9,6 +9,11 @@ datasets_root = Path('working')
 raw_dt = pd.read_csv(datafile_path, nrows = 28800)
 raw_dt = raw_dt[raw_dt['Occupancy Mode Indicator'] > 0]
 
+'''
+Create new blank csv and wipe the old
+blank csv
+'''
+
 from paho.mqtt import client as mqtt_client
 
 
@@ -46,6 +51,14 @@ def publish(client, csv_path="PyTorchAnomalyDD.csv"):
             line_count += 1
             result = client.publish(topic, temp_data_val)
             status = result[0]
+            '''
+            Within loop, add new publish to blank CSV
+            to build 'real time' data, after x amount of time (a day)
+            close csv so that it can be read by anomaly detection
+            (look into simultaneous read/write), after function has
+            been given enough time to run, continue inserting
+            new entries
+            '''
             if status == 0:
                 print(f"Send `{temp_data_val}` to topic `{topic}`")
             else:
