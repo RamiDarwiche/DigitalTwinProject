@@ -58,6 +58,10 @@ def publish(client, csv_path="PyTorchAnomalyDD.csv"):
             (look into simultaneous read/write), after function has
             been given enough time to run, continue inserting
             new entries
+
+            Maybe consolidate both scripts into one file so that 
+            separate loops can be made for reading/writing, reduces 
+            room for simultaneous read/write errors
             '''
             if status == 0:
                 print(f"Send `{temp_data_val}` to topic `{topic}`")
