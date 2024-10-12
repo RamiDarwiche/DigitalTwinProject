@@ -1,3 +1,5 @@
+# About
+
 This repository stores the code for academic research at the University of Florida pertaining to the use of machine learning for improving HVAC maintenance standards. Using IoT sensors (emulated in Unreal and MQTTX), a machine learning algorithm parses through historic data measured every second to determine if temperature measurement appear anomalous. In the event of anomaly detection, an HVAC maintenance technician would be remotely alerted to determine next steps.
 
 Instructions for installation:
